@@ -63,7 +63,7 @@ export default function AppLayout({
                           href={route('login')}
                           className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                         >
-                          Log in
+                          {t('navbar.login')}
                         </Link>
 
                         {canRegister && (
@@ -71,7 +71,7 @@ export default function AppLayout({
                             href={route('register')}
                             className="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                           >
-                            Register
+                            {t('navbar.register')}
                           </Link>
                         )}
                       </div>
@@ -107,17 +107,19 @@ export default function AppLayout({
                       >
                         {/* <!-- Account Management --> */}
                         <div className="block px-4 py-2 text-xs text-gray-400">
-                          Manage Account
+                          {t('navbar.manage_account')}
                         </div>
 
                         <div className="border-t border-gray-200 dark:border-gray-600"></div>
                         <DropdownLink href={route('profile.show')}>
-                          Profile
+                          {t('navbar.profile')}
                         </DropdownLink>
 
                         {/* <!-- Authentication --> */}
                         <form onSubmit={logout}>
-                          <DropdownLink as="button">Log Out</DropdownLink>
+                          <DropdownLink as="button">
+                            {t('navbar.log_out')}
+                          </DropdownLink>
                         </form>
                       </Dropdown>
                     </div>
@@ -140,15 +142,15 @@ export default function AppLayout({
             </div>
 
             {/* <!-- Hamburger --> */}
-            <div className="-mr-2 flex items-center sm:hidden">
+            <div className="-mr-2 flex items-center sm:hidden justify-end pr-5">
               <button
                 onClick={() =>
                   setShowingNavigationDropdown(!showingNavigationDropdown)
                 }
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out"
+                className="inline-flex items-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="h-6 w-6 "
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -186,7 +188,25 @@ export default function AppLayout({
             })}
           >
             {!page.props.auth.user ? (
-              <div></div>
+              <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+                <div className="flex flex-col items-center">
+                  <Link
+                    href={route('login')}
+                    className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                  >
+                    {t('navbar.login')}
+                  </Link>
+
+                  {canRegister && (
+                    <Link
+                      href={route('register')}
+                      className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                    >
+                      {t('navbar.register')}
+                    </Link>
+                  )}
+                </div>
+              </div>
             ) : (
               <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div className="flex items-center px-4">
@@ -201,13 +221,6 @@ export default function AppLayout({
                 </div>
 
                 <div className="mt-3 space-y-1">
-                  <ResponsiveNavLink
-                    href={route('profile.show')}
-                    active={route().current('profile.show')}
-                  >
-                    Profile
-                  </ResponsiveNavLink>
-
                   {/* <!-- Authentication --> */}
                   <form method="POST" onSubmit={logout}>
                     <ResponsiveNavLink as="button">Log Out</ResponsiveNavLink>
@@ -223,8 +236,6 @@ export default function AppLayout({
                 {t('home.home')}
               </ResponsiveNavLink>
             </div>
-
-            {/* <!-- Responsive Settings Options --> */}
           </div>
         </nav>
 
