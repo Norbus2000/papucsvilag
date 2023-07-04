@@ -18,10 +18,8 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Dashboard', [
-        'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
-    Inertia::share('canLogin', Route::has('login'));
     Inertia::share('canRegister', Route::has('register'));
 })->name('home');
 
