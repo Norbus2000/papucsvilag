@@ -11,6 +11,7 @@ import DropdownLink from '@/Components/DropdownLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Team } from '@/types';
 import NavLink from '@/Components/NavLink';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 interface Props {
   title: string;
@@ -24,6 +25,7 @@ export default function AppLayout({
   const { canRegister } = usePage().props;
   const page = useTypedPage();
   const route = useRoute();
+  const { t } = useLaravelReactI18n();
   const [showingNavigationDropdown, setShowingNavigationDropdown] =
     useState(false);
 
@@ -79,7 +81,7 @@ export default function AppLayout({
                     href={route('home')}
                     active={route().current('home')}
                   >
-                    home
+                    {t('home.home')}
                   </NavLink>
                 </div>
               </div>
