@@ -8,8 +8,10 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 export default function UpdatePasswordForm() {
+  const { t } = useLaravelReactI18n();
   const route = useRoute();
   const form = useForm({
     current_password: '',
@@ -37,31 +39,33 @@ export default function UpdatePasswordForm() {
       },
     });
   }
-
+  {
+    t('profile.update_pass_desc');
+  }
   return (
     <FormSection
       onSubmit={updatePassword}
-      title={'Update Password'}
-      description={
-        'Ensure your account is using a long, random password to stay secure.'
-      }
+      title={t('profile.update_pass')}
+      description={t('profile.update_pass_desc')}
       renderActions={() => (
         <>
           <ActionMessage on={form.recentlySuccessful} className="mr-3">
-            Saved.
+            {t('profile.saved')}
           </ActionMessage>
 
           <PrimaryButton
             className={classNames({ 'opacity-25': form.processing })}
             disabled={form.processing}
           >
-            Save
+            {t('profile.save')}
           </PrimaryButton>
         </>
       )}
     >
       <div className="col-span-6 sm:col-span-4">
-        <InputLabel htmlFor="current_password">Current Password</InputLabel>
+        <InputLabel htmlFor="current_password">
+          {t('profile.current_password')}
+        </InputLabel>
         <TextInput
           id="current_password"
           type="password"
@@ -73,11 +77,14 @@ export default function UpdatePasswordForm() {
           }
           autoComplete="current-password"
         />
-        <InputError message={form.errors.current_password} className="mt-2" />
+        <InputError
+          message={form.errors.current_password ? t('profile.wrong_pass') : ''}
+          className="mt-2"
+        />
       </div>
 
       <div className="col-span-6 sm:col-span-4">
-        <InputLabel htmlFor="password">New Password</InputLabel>
+        <InputLabel htmlFor="password">{t('profile.new_pass')}</InputLabel>
         <TextInput
           id="password"
           type="password"
@@ -87,12 +94,15 @@ export default function UpdatePasswordForm() {
           autoComplete="new-password"
           ref={passwordRef}
         />
-        <InputError message={form.errors.password} className="mt-2" />
+        <InputError
+          message={form.errors.password ? t('profile.wrong_pass') : ''}
+          className="mt-2"
+        />
       </div>
 
       <div className="col-span-6 sm:col-span-4">
         <InputLabel htmlFor="password_confirmation">
-          Confirm Password
+          {t('profile.confirm_pass')}
         </InputLabel>
         <TextInput
           id="password_confirmation"

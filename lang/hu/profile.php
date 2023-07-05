@@ -53,4 +53,9 @@ return [
     'update_profile_desc' => 'Frissítse fiókja profiladatait és email címét.',
     'name' => 'Név',
     'email' => 'Email cím',
+    'update_pass' => 'Jelszó megváltoztatása',
+    'update_pass_desc' => 'Győződjön meg róla, hogy fiókja hosszú, véletlenszerű jelszót használ a biztonság megőrzése érdekében.',
+    'current_password' => 'Jelenlegi jelszó',
+    'new_pass' => 'Új jelszó',
+    'confirm_pass' => 'Jelszó megerősítése',
 ];

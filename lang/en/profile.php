@@ -58,6 +58,11 @@ return [
     'update_profile_desc' => 'Update your account\'s profile information and email address.',
     'name' => 'Name',
     'email' => 'Email',
+    'update_pass' => 'Update Password',
+    'update_pass_desc' => 'Ensure your account is using a long, random password to stay secure.',
+    'current_password' => 'Current password',
+    'new_pass' => 'New password',
+    'confirm_pass' => 'Confirm password',
 
 
 
