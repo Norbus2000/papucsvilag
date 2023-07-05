@@ -36,4 +36,16 @@ return [
     enter the setup key.',
     'setup_key' => 'Setup Key:',
     'code' => 'Code',
+    'recovery_code_desc' => 'Store these recovery codes in a secure password manager. They
+    can be used to recover access to your account if your two
+    factor authentication device is lost.',
+    'confirm' => 'Confirm',
+    'regenarete_codes' => 'Regenerate Recovery Codes',
+    'show_codes' => 'Show Recovery Codes',
+    'disable' => 'Disable',
+    'enable' => 'Enable',
+
+
+
+
 ];

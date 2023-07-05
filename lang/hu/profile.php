@@ -32,4 +32,11 @@ return [
     'two_fact_enabled_desc' => 'A kétfaktoros hitelesítés mostantól engedélyezve van. Olvassa be a QR kódot a telefon hitelesítő alkalmazásával, illetve írja be a beállítási kulcsot.',
     'setup_key' => 'Biztonsági kulcs:',
     'code' => 'Kód',
+    'recovery_code_desc' => 'Mentse el ezeket a helyreállítási kódokat egy biztonságos jelszókezelőben. A kódok használhatóak a fiókjához való hozzáférés visszaállítására, ha a kétfaktoros hitelesítő eszköze nincs meg.',
+    'confirm' => 'Megerősítés',
+    'regenarete_codes' => 'Helyreállítási kódok újragenerálása',
+    'show_codes' => 'Helyreállítási kódok megjelenítése',
+    'disable' => 'Letiltás',
+    'enable' => 'Engedélyezés',
+    'two_fact_finish_desc' => 'A kétfaktoros hitelesítés engedélyezésének befejezéséhez olvassa be a QR-kódot a telefon hitelesítő alkalmazás használatával, vagy adja meg a beállítási kulcsot, és a generált OTP kód.',
 ];

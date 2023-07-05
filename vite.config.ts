@@ -4,6 +4,15 @@ import react from '@vitejs/plugin-react';
 import i18n from 'laravel-react-i18n/vite';
 
 export default defineConfig({
+  optimizeDeps: {
+    include: ['linked-dep'],
+  },
+  build: {
+    commonjsOptions: {
+      include: [/linked-dep/, /node_modules/],
+    },
+  },
+
   plugins: [
     laravel({
       input: 'resources/js/app.tsx',
@@ -18,7 +27,8 @@ export default defineConfig({
       '@': '/resources/js',
     },
   },
-  ssr: {
-    noExternal: ['@inertiajs/server'],
+  server: {
+    port: 7000,
+    host: '127.0.0.1',
   },
 });

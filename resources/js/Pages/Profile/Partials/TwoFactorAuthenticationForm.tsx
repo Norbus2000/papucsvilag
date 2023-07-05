@@ -199,9 +199,7 @@ export default function TwoFactorAuthenticationForm({
             <div>
               <div className="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400">
                 <p className="font-semibold">
-                  Store these recovery codes in a secure password manager. They
-                  can be used to recover access to your account if your two
-                  factor authentication device is lost.
+                  {t('profile.recovery_code_desc')}
                 </p>
               </div>
 
@@ -224,21 +222,21 @@ export default function TwoFactorAuthenticationForm({
                   className={classNames('mr-3', { 'opacity-25': enabling })}
                   disabled={enabling}
                 >
-                  Confirm
+                  {t('profile.confirm')}
                 </PrimaryButton>
               </ConfirmsPassword>
             ) : null}
             {recoveryCodes.length > 0 && !confirming ? (
               <ConfirmsPassword onConfirm={regenerateRecoveryCodes}>
                 <SecondaryButton className="mr-3">
-                  Regenerate Recovery Codes
+                  {t('profile.regenarete_codes')}
                 </SecondaryButton>
               </ConfirmsPassword>
             ) : null}
             {recoveryCodes.length === 0 && !confirming ? (
               <ConfirmsPassword onConfirm={showRecoveryCodes}>
                 <SecondaryButton className="mr-3">
-                  Show Recovery Codes
+                  {t('profile.show_codes')}
                 </SecondaryButton>
               </ConfirmsPassword>
             ) : null}
@@ -249,7 +247,7 @@ export default function TwoFactorAuthenticationForm({
                   className={classNames('mr-3', { 'opacity-25': disabling })}
                   disabled={disabling}
                 >
-                  Cancel
+                  {t('profile.cancel')}
                 </SecondaryButton>
               </ConfirmsPassword>
             ) : (
@@ -258,7 +256,7 @@ export default function TwoFactorAuthenticationForm({
                   className={classNames({ 'opacity-25': disabling })}
                   disabled={disabling}
                 >
-                  Disable
+                  {t('profile.disable')}
                 </DangerButton>
               </ConfirmsPassword>
             )}
@@ -271,7 +269,7 @@ export default function TwoFactorAuthenticationForm({
                 className={classNames({ 'opacity-25': enabling })}
                 disabled={enabling}
               >
-                Enable
+                {t('profile.enable')}
               </PrimaryButton>
             </ConfirmsPassword>
           </div>

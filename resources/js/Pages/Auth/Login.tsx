@@ -53,7 +53,10 @@ export default function Login({ canResetPassword, status }: Props) {
             required
             autoFocus
           />
-          <InputError className="mt-2" message={t('login.failed_login')} />
+          <InputError
+            className="mt-2"
+            message={form.errors.email ? t('login.failed_login') : ''}
+          />
         </div>
         <div className="mt-4">
           <InputLabel htmlFor="password">{t('login.password')}</InputLabel>
