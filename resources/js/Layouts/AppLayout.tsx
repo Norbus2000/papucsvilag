@@ -223,7 +223,9 @@ export default function AppLayout({
                 <div className="mt-3 space-y-1">
                   {/* <!-- Authentication --> */}
                   <form method="POST" onSubmit={logout}>
-                    <ResponsiveNavLink as="button">Log Out</ResponsiveNavLink>
+                    <ResponsiveNavLink as="button">
+                      {t('navbar.log_out')}
+                    </ResponsiveNavLink>
                   </form>
                 </div>
               </div>

@@ -43,7 +43,7 @@ export default function Login({ canResetPassword, status }: Props) {
 
       <form onSubmit={onSubmit}>
         <div>
-          <InputLabel htmlFor="email">Email</InputLabel>
+          <InputLabel htmlFor="email">{t('login.email')}</InputLabel>
           <TextInput
             id="email"
             type="email"
@@ -53,10 +53,10 @@ export default function Login({ canResetPassword, status }: Props) {
             required
             autoFocus
           />
-          <InputError className="mt-2" message={form.errors.email} />
+          <InputError className="mt-2" message={t('login.failed_login')} />
         </div>
         <div className="mt-4">
-          <InputLabel htmlFor="password">Password</InputLabel>
+          <InputLabel htmlFor="password">{t('login.password')}</InputLabel>
           <TextInput
             id="password"
             type="password"
@@ -68,7 +68,6 @@ export default function Login({ canResetPassword, status }: Props) {
           />
           <InputError className="mt-2" message={form.errors.password} />
         </div>
-        <div>{t('auth.failed')}</div>
         <div className="mt-4">
           <label className="flex items-center">
             <Checkbox
@@ -79,7 +78,7 @@ export default function Login({ canResetPassword, status }: Props) {
               }
             />
             <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-              Remember me
+              {t('login.remember_me')}
             </span>
           </label>
         </div>
@@ -90,7 +89,7 @@ export default function Login({ canResetPassword, status }: Props) {
                 href={route('password.request')}
                 className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
               >
-                Forgot your password?
+                {t('login.forgot_password')}
               </Link>
             </div>
           )}
@@ -100,14 +99,14 @@ export default function Login({ canResetPassword, status }: Props) {
               href={route('register')}
               className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
             >
-              Need an account?
+              {t('login.register')}
             </Link>
 
             <PrimaryButton
               className={classNames('ml-4', { 'opacity-25': form.processing })}
               disabled={form.processing}
             >
-              Log in
+              {t('login.log_in')}
             </PrimaryButton>
           </div>
         </div>
