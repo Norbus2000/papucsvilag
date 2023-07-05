@@ -39,4 +39,6 @@ return [
     'disable' => 'Letiltás',
     'enable' => 'Engedélyezés',
     'two_fact_finish_desc' => 'A kétfaktoros hitelesítés engedélyezésének befejezéséhez olvassa be a QR-kódot a telefon hitelesítő alkalmazás használatával, vagy adja meg a beállítási kulcsot, és a generált OTP kód.',
+    'logout_broswer_sessions_desc' => 'Kérjük, adja meg jelszavát a kijelentkezés megerősítéséhez
+    a többi eszközén.',
 ];

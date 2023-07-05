@@ -71,7 +71,7 @@ export default function Login({ canResetPassword, status }: Props) {
           />
           <InputError
             className="mt-2"
-            message={form.errors.password ? t('wrong_pass') : ''}
+            message={form.errors.password ? t('login.wrong_pass') : ''}
           />
         </div>
         <div className="mt-4">

@@ -44,6 +44,8 @@ return [
     'show_codes' => 'Show Recovery Codes',
     'disable' => 'Disable',
     'enable' => 'Enable',
+    'logout_broswer_sessions_desc' => 'Please enter your password to confirm you would like to log out of
+    your other browser sessions across all of your devices.',
 
 
 

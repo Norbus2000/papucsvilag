@@ -128,9 +128,8 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
 
       {/* <!-- Log Out Other Devices Confirmation Modal --> */}
       <DialogModal isOpen={confirmingLogout} onClose={closeModal}>
-        <DialogModal.Content title={'Log Out Other Browser Sessions'}>
-          Please enter your password to confirm you would like to log out of
-          your other browser sessions across all of your devices.
+        <DialogModal.Content title={t('profile.logout_broswer_sessions')}>
+          {t('profile.logout_broswer_sessions_desc')}
           <div className="mt-4">
             <TextInput
               type="password"
@@ -141,7 +140,10 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
               onChange={e => form.setData('password', e.currentTarget.value)}
             />
 
-            <InputError message={form.errors.password} className="mt-2" />
+            <InputError
+              message={form.errors.password ? t('profile.wrong_pass') : ''}
+              className="mt-2"
+            />
           </div>
         </DialogModal.Content>
 
@@ -153,7 +155,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
             className={classNames('ml-2', { 'opacity-25': form.processing })}
             disabled={form.processing}
           >
-            Log Out Other Browser Sessions
+            {t('profile.logout_broswer_sessions')}
           </PrimaryButton>
         </DialogModal.Footer>
       </DialogModal>
