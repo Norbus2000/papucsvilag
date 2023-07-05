@@ -14,10 +14,20 @@ export default function NavLinks({ matches }: Props) {
   const { t } = useLaravelReactI18n();
   if (matches) {
     return (
-      <div className="p-5">
-        <NavLink href={route('home')} active={route().current('home')}>
-          {t('home.home')}
-        </NavLink>
+      <div className="p-5 flex row">
+        <div className="pr-10">
+          <NavLink href={route('home')} active={route().current('home')}>
+            {t('home.home')}
+          </NavLink>
+        </div>
+        <div>
+          <NavLink
+            href={route('products')}
+            active={route().current('products')}
+          >
+            {t('products.products')}
+          </NavLink>
+        </div>
       </div>
     );
   }

@@ -17,13 +17,15 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Dashboard', [
+    return Inertia::render('Home', [
         'canRegister' => Route::has('register'),
     ]);
     Inertia::share('canRegister', Route::has('register'));
 })->name('home');
 
-
+Route::get('/products', function () {
+    return Inertia::render('Products');
+})->name('products');
 
 Route::middleware([
     'auth:sanctum',
