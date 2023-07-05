@@ -27,7 +27,6 @@ export default function Dropdown({
       return 'origin-top';
     }
   })();
-  console.log(width);
 
   return (
     <div className="relative">

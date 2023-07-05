@@ -1,15 +1,16 @@
 import React from 'react';
 import { useMediaQuery } from '@mui/material';
-import NavLink from '@/Components/NavLink';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import useTypedPage from '@/Hooks/useTypedPage';
 import useRoute from '@/Hooks/useRoute';
 import { Link, usePage } from '@inertiajs/react';
 import ProfileSettingsDropdown from './ProfileSettingsDropdown';
-import LangChanger from './LangChanger';
 
-export default function LoginRegister({}) {
-  const matches = useMediaQuery('(min-width:639px)');
+interface Props {
+  matches: any;
+}
+
+export default function LoginRegister({ matches }: Props) {
   const { t } = useLaravelReactI18n();
   const page = useTypedPage();
   const route = useRoute();
