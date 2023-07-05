@@ -11,16 +11,12 @@ interface Props {
 
 export default function Dropdown({
   align = 'right',
-  width = '48',
+  width,
   contentClasses = 'py-1 bg-white dark:bg-gray-700',
   renderTrigger,
   children,
 }: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(false);
-
-  const widthClass = {
-    '48': 'w-48',
-  }[width.toString()];
 
   const alignmentClasses = (() => {
     if (align === 'left') {
@@ -31,6 +27,7 @@ export default function Dropdown({
       return 'origin-top';
     }
   })();
+  console.log(width);
 
   return (
     <div className="relative">
@@ -55,8 +52,7 @@ export default function Dropdown({
       >
         <div
           className={classNames(
-            'absolute mt-2 rounded-md shadow-lg',
-            widthClass,
+            `absolute mt-2 rounded-md shadow-lg w-${width?.toString()} `,
             alignmentClasses,
           )}
           onClick={() => setOpen(false)}
