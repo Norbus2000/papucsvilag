@@ -12,6 +12,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 import TextInput from '@/Components/TextInput';
 import useTypedPage from '@/Hooks/useTypedPage';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 interface Props {
   requiresConfirmation: boolean;
@@ -27,6 +28,7 @@ export default function TwoFactorAuthenticationForm({
   const [recoveryCodes, setRecoveryCodes] = useState<string[]>([]);
   const [confirming, setConfirming] = useState(false);
   const [setupKey, setSetupKey] = useState<string | null>(null);
+  const { t } = useLaravelReactI18n();
   const confirmationForm = useForm({
     code: '',
   });
@@ -107,39 +109,33 @@ export default function TwoFactorAuthenticationForm({
 
   return (
     <ActionSection
-      title={'Two Factor Authentication'}
-      description={
-        'Add additional security to your account using two factor authentication.'
-      }
+      title={t('profile.two_fact_auth')}
+      description={t('profile.two_fact_desc')}
     >
       {(() => {
         if (twoFactorEnabled && !confirming) {
           return (
             <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-              You have enabled two factor authentication.
+              {t('profile.two_fact_enabled')}
             </h3>
           );
         }
         if (confirming) {
           return (
             <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-              Finish enabling two factor authentication.
+              {t('profile.two_fact_finish')}
             </h3>
           );
         }
         return (
           <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-            You have not enabled two factor authentication.
+            {t('profile.two_fact_disabled')}
           </h3>
         );
       })()}
 
       <div className="mt-3 max-w-xl text-sm text-gray-600 dark:text-gray-400">
-        <p>
-          When two factor authentication is enabled, you will be prompted for a
-          secure, random token during authentication. You may retrieve this
-          token from your phone's Google Authenticator application.
-        </p>
+        <p>{t('profile.two_fact_desc')}</p>
       </div>
 
       {twoFactorEnabled || confirming ? (
@@ -149,17 +145,10 @@ export default function TwoFactorAuthenticationForm({
               <div className="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400">
                 {confirming ? (
                   <p className="font-semibold">
-                    To finish enabling two factor authentication, scan the
-                    following QR code using your phone's authenticator
-                    application or enter the setup key and provide the generated
-                    OTP code.
+                    {t('profile.two_fact_finish_desc')}
                   </p>
                 ) : (
-                  <p>
-                    Two factor authentication is now enabled. Scan the following
-                    QR code using your phone's authenticator application or
-                    enter the setup key.
-                  </p>
+                  <p>{t('profile.two_fact_enabled_desc')}</p>
                 )}
               </div>
 
@@ -171,7 +160,7 @@ export default function TwoFactorAuthenticationForm({
               {setupKey && (
                 <div className="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400">
                   <p className="font-semibold">
-                    Setup Key:{' '}
+                    {t('profile.setup_key')}{' '}
                     <span
                       dangerouslySetInnerHTML={{ __html: setupKey || '' }}
                     />
@@ -181,7 +170,7 @@ export default function TwoFactorAuthenticationForm({
 
               {confirming && (
                 <div className="mt-4">
-                  <InputLabel htmlFor="code" value="Code" />
+                  <InputLabel htmlFor="code" value={t('profile.code')} />
 
                   <TextInput
                     id="code"

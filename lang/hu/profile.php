@@ -21,4 +21,15 @@ return [
     'this_device' => 'Ez az eszköz',
     'last_active' => 'Utoljára aktív',
     'logout_broswer_sessions' => 'Kijelentkezés az eszközökön',
+    'two_fact_desc' => 'A kétfaktoros hitelesítés segítségével további biztonságot adhat fiókjához.',
+    'two_fact_auth' => 'Kétfaktoros hitelesítés',
+    'two_fact_enabled' => 'A kétfaktoros hitelesítés be van kapcsolva.',
+    'two_fact_finish' => '
+    Fejezze be a kétfaktoros hitelesítést.',
+    'two_fact_disabled' => 'Nem kapcsolta be a kétfaktoros hitelesítést.',
+    'two_fact_desc' => 'Ha a kétfaktoros hitelesítés engedélyezve van, a rendszer kérni fogja Öntől a
+    biztonságos, véletlenszerű token a hitelesítést. Ezt a tokent visszakeresheti a telefonja Google Hitelesítő alkalmazásából.',
+    'two_fact_enabled_desc' => 'A kétfaktoros hitelesítés mostantól engedélyezve van. Olvassa be a QR kódot a telefon hitelesítő alkalmazásával, illetve írja be a beállítási kulcsot.',
+    'setup_key' => 'Biztonsági kulcs:',
+    'code' => 'Kód',
 ];

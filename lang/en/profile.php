@@ -20,6 +20,20 @@ return [
     'this_device' => 'This device',
     'last_active' => 'Last active',
     'logout_broswer_sessions' => 'Log Out Other Browser Sessions',
-
-
+    'two_fact_desc' => 'Add additional security to your account using two factor authentication.',
+    'two_fact_auth' => 'Two Factor Authentication',
+    'two_fact_enabled' => 'You have enabled two factor authentication.',
+    'two_fact_finish' => 'Finish enabling two factor authentication.',
+    'two_fact_disabled' => 'You have not enabled two factor authentication.',
+    'two_fact_desc' => 'When two factor authentication is enabled, you will be prompted for a
+    secure, random token during authentication. You may retrieve this
+    token from your phone\' s Google Authenticator application.',
+    'two_fact_finish_desc' => 'To finish enabling two factor authentication, scan the
+    following QR code using your phone\'s authenticator
+    application or enter the setup key and provide the generated
+    OTP code.',
+    'two_fact_enabled_desc' => 'Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application or
+    enter the setup key.',
+    'setup_key' => 'Setup Key:',
+    'code' => 'Code',
 ];
