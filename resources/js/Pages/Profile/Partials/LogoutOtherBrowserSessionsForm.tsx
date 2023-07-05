@@ -10,6 +10,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import SecondaryButton from '@/Components/SecondaryButton';
 import { Session } from '@/types';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 interface Props {
   sessions: Session[];
@@ -22,7 +23,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
   const form = useForm({
     password: '',
   });
-
+  const { t } = useLaravelReactI18n();
   function confirmLogout() {
     setConfirmingLogout(true);
 
@@ -46,16 +47,11 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
 
   return (
     <ActionSection
-      title={'Browser Sessions'}
-      description={
-        'Manage and log out your active sessions on other browsers and devices.'
-      }
+      title={t('profile.browser_sessions')}
+      description={t('profile.browser_sessions_desc')}
     >
       <div className="max-w-xl text-sm text-gray-600 dark:text-gray-400">
-        If necessary, you may log out of all of your other browser sessions
-        across all of your devices. Some of your recent sessions are listed
-        below; however, this list may not be exhaustive. If you feel your
-        account has been compromised, you should also update your password.
+        {t('profile.browser_sessions_text')}
       </div>
 
       {/* <!-- Other Browser Sessions --> */}
@@ -104,10 +100,13 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
                     {session.ip_address},
                     {session.is_current_device ? (
                       <span className="text-green-500 font-semibold">
-                        This device
+                        {t('profile.this_device')}
                       </span>
                     ) : (
-                      <span>Last active {session.last_active}</span>
+                      <span>
+                        {t('profile.last_active')}
+                        {session.last_active}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -119,7 +118,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
 
       <div className="flex items-center mt-5">
         <PrimaryButton onClick={confirmLogout}>
-          Log Out Other Browser Sessions
+          {t('profile.logout_broswer_sessions')}
         </PrimaryButton>
 
         <ActionMessage on={form.recentlySuccessful} className="ml-3">
