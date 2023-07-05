@@ -1,18 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are the default lines which match reasons
-    | that are given by the password broker for a password update attempt
-    | has failed, such as for an invalid token or invalid new password.
-    |
-    */
-
     'profile' => 'Profil',
     'profile_delete_warning' => 'A fiók törlése után minden adata véglegesen törölve lesz.',
     'delete_desc' => 'A fiók végleges törlése',
@@ -23,7 +11,4 @@ return [
     'password' => 'Jelszó',
     'wrong_pass' => 'Hibás jelszó',
     'cancel' => 'Mégse',
-
-
-
 ];
