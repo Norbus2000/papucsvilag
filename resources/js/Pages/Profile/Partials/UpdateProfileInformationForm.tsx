@@ -12,6 +12,7 @@ import TextInput from '@/Components/TextInput';
 import SecondaryButton from '@/Components/SecondaryButton';
 import { User } from '@/types';
 import useTypedPage from '@/Hooks/useTypedPage';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 interface Props {
   user: User;
@@ -29,6 +30,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
   const photoRef = useRef<HTMLInputElement>(null);
   const page = useTypedPage();
   const [verificationLinkSent, setVerificationLinkSent] = useState(false);
+  const { t } = useLaravelReactI18n();
 
   function updateProfileInformation() {
     form.post(route('user-profile-information.update'), {
@@ -80,27 +82,28 @@ export default function UpdateProfileInformationForm({ user }: Props) {
   return (
     <FormSection
       onSubmit={updateProfileInformation}
-      title={'Profile Information'}
-      description={`Update your account's profile information and email address.`}
+      title={t('profile.profile_inf')}
+      description={t('profile.update_profile_desc')}
       renderActions={() => (
         <>
           <ActionMessage on={form.recentlySuccessful} className="mr-3">
-            Saved.
+            {t('profile.saved')}
           </ActionMessage>
 
           <PrimaryButton
             className={classNames({ 'opacity-25': form.processing })}
             disabled={form.processing}
           >
-            Save
+            {t('profile.save')}
           </PrimaryButton>
         </>
       )}
     >
-      {/* <!-- Profile Photo --> */}
+      {/*  <!-- Profile Photo -->
+      Kepfeltoltes képfeltöltés
       {page.props.jetstream.managesProfilePhotos ? (
         <div className="col-span-6 sm:col-span-4">
-          {/* <!-- Profile Photo File Input --> */}
+           <!-- Profile Photo File Input --> 
           <input
             type="file"
             className="hidden"
@@ -154,11 +157,11 @@ export default function UpdateProfileInformationForm({ user }: Props) {
 
           <InputError message={form.errors.photo} className="mt-2" />
         </div>
-      ) : null}
+      ) : null} */}
 
       {/* <!-- Name --> */}
       <div className="col-span-6 sm:col-span-4">
-        <InputLabel htmlFor="name" value="Name" />
+        <InputLabel htmlFor="name" value={t('profile.name')} />
         <TextInput
           id="name"
           type="text"
@@ -167,12 +170,15 @@ export default function UpdateProfileInformationForm({ user }: Props) {
           onChange={e => form.setData('name', e.currentTarget.value)}
           autoComplete="name"
         />
-        <InputError message={form.errors.name} className="mt-2" />
+        <InputError
+          message={form.errors.name ? t('profile.worng_name') : ''}
+          className="mt-2"
+        />
       </div>
 
       {/* <!-- Email --> */}
       <div className="col-span-6 sm:col-span-4">
-        <InputLabel htmlFor="email" value="Email" />
+        <InputLabel htmlFor="email" value={t('profile.email')} />
         <TextInput
           id="email"
           type="email"
@@ -180,13 +186,16 @@ export default function UpdateProfileInformationForm({ user }: Props) {
           value={form.data.email}
           onChange={e => form.setData('email', e.currentTarget.value)}
         />
-        <InputError message={form.errors.email} className="mt-2" />
-
+        <InputError
+          message={form.errors.email ? t('profile.wrong_email') : ''}
+          className="mt-2"
+        />
+        {/*  Email megerosites */}
         {page.props.jetstream.hasEmailVerification &&
         user.email_verified_at === null ? (
           <div>
             <p className="text-sm mt-2 dark:text-white">
-              Your email address is unverified.
+              {t('profile.email_not_verified')}
               <Link
                 href={route('verification.send')}
                 method="post"
@@ -197,12 +206,12 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                   setVerificationLinkSent(true);
                 }}
               >
-                Click here to re-send the verification email.
+                {t('profile.resend_email_verification')}
               </Link>
             </p>
             {verificationLinkSent && (
               <div className="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                A new verification link has been sent to your email address.
+                {t('profile.email_verification_sent')}
               </div>
             )}
           </div>

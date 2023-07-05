@@ -41,4 +41,16 @@ return [
     'two_fact_finish_desc' => 'A kétfaktoros hitelesítés engedélyezésének befejezéséhez olvassa be a QR-kódot a telefon hitelesítő alkalmazás használatával, vagy adja meg a beállítási kulcsot, és a generált OTP kód.',
     'logout_broswer_sessions_desc' => 'Kérjük, adja meg jelszavát a kijelentkezés megerősítéséhez
     a többi eszközén.',
+    'profile_inf' => 'Profil információk',
+    'update_profile' => 'Frissítse fiókja profiladatait és email címét.',
+    'saved' => 'Mentve',
+    'save' => 'Mentés',
+    'wrong_name' => 'Hibás név',
+    'wrong_email' => 'Hibás email cím',
+    'email_not_verified' => 'Az email címe nincs megerősítve.',
+    'resend_email_verification' => 'Kattintson ide az ellenőrző email újraküldéséhez.',
+    'email_verification_sent' => 'Új ellenőrző linket küldtünk az email címére.',
+    'update_profile_desc' => 'Frissítse fiókja profiladatait és email címét.',
+    'name' => 'Név',
+    'email' => 'Email cím',
 ];

@@ -46,6 +46,20 @@ return [
     'enable' => 'Enable',
     'logout_broswer_sessions_desc' => 'Please enter your password to confirm you would like to log out of
     your other browser sessions across all of your devices.',
+    'profile_inf' => 'Profile Information',
+    'update_profile' => 'Update your account\'s profile information and email address.',
+    'saved' => 'Saved.',
+    'save' => 'Save',
+    'wrong_name' => 'Wrong name',
+    'wrong_email' => 'Wrong email',
+    'email_not_verified' => 'Your email address is unverified.',
+    'resend_email_verification' => 'Click here to re-send the verification email.',
+    'email_verification_sent' => 'A new verification link has been sent to your email address.',
+    'update_profile_desc' => 'Update your account\'s profile information and email address.',
+    'name' => 'Name',
+    'email' => 'Email',
+
+
 
 
 
