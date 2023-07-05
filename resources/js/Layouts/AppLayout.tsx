@@ -48,6 +48,7 @@ export default function AppLayout({
           </div>
 
           <ResponsiveNavMenu
+            setShowingNavigationDropdown={setShowingNavigationDropdown}
             showingNavigationDropdown={showingNavigationDropdown}
           />
         </nav>

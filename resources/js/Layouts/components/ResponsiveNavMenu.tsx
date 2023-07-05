@@ -11,9 +11,11 @@ import { HU } from 'country-flag-icons/react/3x2';
 
 interface Props {
   showingNavigationDropdown: any;
+  setShowingNavigationDropdown: any;
 }
 
 export default function ResponsiveNavMenu({
+  setShowingNavigationDropdown,
   showingNavigationDropdown,
 }: Props) {
   const page = useTypedPage();
@@ -65,8 +67,16 @@ export default function ResponsiveNavMenu({
               </div>
             </div>
           </div>
+          <div className="pt-1 pb-2 space-y-1">
+            <ResponsiveNavLink
+              href={route('profile.show')}
+              active={route().current('profile.show')}
+            >
+              {t('navbar.profile')}
+            </ResponsiveNavLink>
+          </div>
 
-          <div className="pt-2 pb-3 space-y-1">
+          <div className="pt-1 pb-2 space-y-1">
             <ResponsiveNavLink
               href={route('home')}
               active={route().current('home')}
@@ -75,24 +85,32 @@ export default function ResponsiveNavMenu({
             </ResponsiveNavLink>
           </div>
           <div className="pt-2 pb-1 border-t border-b border-gray-200 dark:border-gray-600">
-            <div className="justify-center">
-              <div className="flex flex-col">
-                <div
-                  onClick={() => setLocale('hu')}
-                  className="flex items-center"
-                >
-                  <div className=" flex row w-full pl-3 pr-4 py-2 border-l-4 border-transparent text-left text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out">
-                    <div className="pr-5">{t('navbar.hu')}</div>
+            <div className="flex flex-col">
+              <div
+                onClick={() => {
+                  setLocale('hu');
+                  setShowingNavigationDropdown(!showingNavigationDropdown);
+                }}
+                className="flex items-center"
+              >
+                <div className="flex row p-1 w-full pl-3 pr-4 py-2 border-l-4 border-transparent text-left text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out">
+                  <div className="flex w-1/3 justify-between">
+                    <div>{t('navbar.hu')}</div>
                     <HU title="Hungarian" className="w-6" />
                   </div>
                 </div>
+              </div>
 
-                <div
-                  onClick={() => setLocale('en')}
-                  className="flex items-center"
-                >
-                  <div className=" flex row p-1 w-full pl-3 pr-4 py-2 border-l-4 border-transparent text-left text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out">
-                    <div className="pr-5">{t('navbar.en')}</div>
+              <div
+                onClick={() => {
+                  setLocale('en');
+                  setShowingNavigationDropdown(!showingNavigationDropdown);
+                }}
+                className="flex items-center"
+              >
+                <div className="flex row p-1 w-full pl-3 pr-4 py-2 border-l-4 border-transparent text-left text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out">
+                  <div className="flex w-1/3 justify-between">
+                    <div>{t('navbar.en')}</div>
                     <US title="United States" className="w-6 " />
                   </div>
                 </div>
