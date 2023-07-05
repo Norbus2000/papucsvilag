@@ -20,6 +20,7 @@ return [
     'forgot_password' => 'Elfelejtett jelszó ?',
     'register' => 'Regisztráció',
     'login' => 'Bejelentkezés',
+    'wrong_pass' => 'Hibás jelszó',
 
 
 ];

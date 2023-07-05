@@ -66,7 +66,10 @@ export default function Login({ canResetPassword, status }: Props) {
             required
             autoComplete="current-password"
           />
-          <InputError className="mt-2" message={form.errors.password} />
+          <InputError
+            className="mt-2"
+            message={form.errors.password ? t('wrong_pass') : ''}
+          />
         </div>
         <div className="mt-4">
           <label className="flex items-center">

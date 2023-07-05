@@ -8,6 +8,7 @@ import useTypedPage from '@/Hooks/useTypedPage';
 import SectionBorder from '@/Components/SectionBorder';
 import AppLayout from '@/Layouts/AppLayout';
 import { Session } from '@/types';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 interface Props {
   sessions: Session[];
@@ -19,9 +20,10 @@ export default function Show({
   confirmsTwoFactorAuthentication,
 }: Props) {
   const page = useTypedPage();
+  const { t } = useLaravelReactI18n();
 
   return (
-    <AppLayout title={'Profile'}>
+    <AppLayout title={t('profile.profile')}>
       <div>
         <div className="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
           {page.props.jetstream.canUpdateProfileInformation ? (

@@ -20,6 +20,8 @@ return [
     'forgot_password' => 'Forgot password ?',
     'register' => 'Need an account ?',
     'login' => 'Log in',
+    'wrong_pass' => 'Wrong password',
+
 
 
 ];

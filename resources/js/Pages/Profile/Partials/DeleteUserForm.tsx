@@ -8,9 +8,11 @@ import DialogModal from '@/Components/DialogModal';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import SecondaryButton from '@/Components/SecondaryButton';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 export default function DeleteUserForm() {
   const route = useRoute();
+  const { t } = useLaravelReactI18n();
   const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
   const form = useForm({
     password: '',
@@ -39,49 +41,50 @@ export default function DeleteUserForm() {
 
   return (
     <ActionSection
-      title={'Delete Account'}
-      description={'Permanently delete your account.'}
+      title={t('profile.delete_acc')}
+      description={t('profile.delete_desc')}
     >
       <div className="max-w-xl text-sm text-gray-600 dark:text-gray-400">
-        Once your account is deleted, all of its resources and data will be
-        permanently deleted. Before deleting your account, please download any
-        data or information that you wish to retain.
+        {t('profile.profile_delete_warning')}
       </div>
 
       <div className="mt-5">
         <DangerButton onClick={confirmUserDeletion}>
-          Delete Account
+          {t('profile.delete_acc')}
         </DangerButton>
       </div>
 
       {/* <!-- Delete Account Confirmation Modal --> */}
       <DialogModal isOpen={confirmingUserDeletion} onClose={closeModal}>
-        <DialogModal.Content title={'Delete Account'}>
-          Are you sure you want to delete your account? Once your account is
-          deleted, all of its resources and data will be permanently deleted.
-          Please enter your password to confirm you would like to permanently
-          delete your account.
+        <DialogModal.Content title={t('profile.delete_acc')}>
+          <div>{t('profile.modal_delete_desc')}</div>
+          <div>{t('profile.modal_ask_pass')}</div>
           <div className="mt-4">
             <TextInput
               type="password"
               className="mt-1 block w-3/4"
-              placeholder="Password"
+              placeholder={t('profile.password')}
               value={form.data.password}
               onChange={e => form.setData('password', e.currentTarget.value)}
             />
 
-            <InputError message={form.errors.password} className="mt-2" />
+            <InputError
+              message={form.errors.password ? t('profile.wrong_pass') : ''}
+              className="mt-2"
+            />
           </div>
         </DialogModal.Content>
         <DialogModal.Footer>
-          <SecondaryButton onClick={closeModal}>Cancel</SecondaryButton>
+          <SecondaryButton onClick={closeModal}>
+            {t('profile.cancel')}
+          </SecondaryButton>
 
           <DangerButton
             onClick={deleteUser}
             className={classNames('ml-2', { 'opacity-25': form.processing })}
             disabled={form.processing}
           >
-            Delete Account
+            {t('profile.delete_acc')}
           </DangerButton>
         </DialogModal.Footer>
       </DialogModal>

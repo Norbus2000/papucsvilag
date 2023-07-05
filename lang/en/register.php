@@ -19,6 +19,7 @@ return [
     'confirm_password' => 'Confirm password',
     'already_registered' => 'Already registered ?',
     'register' => 'Register',
+    'wrong_pass' => 'Wrong password',
 
 
 ];
