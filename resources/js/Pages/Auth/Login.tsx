@@ -33,7 +33,7 @@ export default function Login({ canResetPassword, status }: Props) {
 
   return (
     <AuthenticationCard>
-      <Head title="login" />
+      <Head title={t('login.login')} />
 
       {status && (
         <div className="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
@@ -106,7 +106,7 @@ export default function Login({ canResetPassword, status }: Props) {
               className={classNames('ml-4', { 'opacity-25': form.processing })}
               disabled={form.processing}
             >
-              {t('login.log_in')}
+              {t('login.login')}
             </PrimaryButton>
           </div>
         </div>

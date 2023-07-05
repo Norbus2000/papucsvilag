@@ -19,7 +19,7 @@ return [
     'remember_me' => 'Emlékezz rám',
     'forgot_password' => 'Elfelejtett jelszó ?',
     'register' => 'Regisztráció',
-    'log_in' => 'Bejelentkezés',
+    'login' => 'Bejelentkezés',
 
 
 ];

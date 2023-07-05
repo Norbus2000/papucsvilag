@@ -13,13 +13,12 @@ return [
     |
     */
 
-    'failed_login' => 'These credentials do not match our records.',
+    'name' => 'Name',
     'email' => 'Email address',
     'password' => 'Password',
-    'remember_me' => 'Remember me',
-    'forgot_password' => 'Forgot password ?',
-    'register' => 'Need an account ?',
-    'login' => 'Log in',
+    'confirm_password' => 'Confirm password',
+    'already_registered' => 'Already registered ?',
+    'register' => 'Register',
 
 
 ];

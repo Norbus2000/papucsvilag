@@ -13,13 +13,12 @@ return [
     |
     */
 
-    'failed_login' => 'These credentials do not match our records.',
-    'email' => 'Email address',
-    'password' => 'Password',
-    'remember_me' => 'Remember me',
-    'forgot_password' => 'Forgot password ?',
-    'register' => 'Need an account ?',
-    'login' => 'Log in',
+    'name' => 'Név',
+    'email' => 'Email cím',
+    'password' => 'Jelszó',
+    'confirm_password' => 'Jelszó megerősítése',
+    'already_registered' => 'Már felhasználó ?',
+    'register' => 'Regisztráció',
 
 
 ];

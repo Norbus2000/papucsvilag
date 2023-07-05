@@ -9,8 +9,10 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 export default function Register() {
+  const { t } = useLaravelReactI18n();
   const page = useTypedPage();
   const route = useRoute();
   const form = useForm({
@@ -34,7 +36,7 @@ export default function Register() {
 
       <form onSubmit={onSubmit}>
         <div>
-          <InputLabel htmlFor="name">Name</InputLabel>
+          <InputLabel htmlFor="name">{t('register.name')}</InputLabel>
           <TextInput
             id="name"
             type="text"
@@ -49,7 +51,7 @@ export default function Register() {
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="email">Email</InputLabel>
+          <InputLabel htmlFor="email">{t('register.email')}</InputLabel>
           <TextInput
             id="email"
             type="email"
@@ -62,7 +64,7 @@ export default function Register() {
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password">Password</InputLabel>
+          <InputLabel htmlFor="password">{t('register.password')}</InputLabel>
           <TextInput
             id="password"
             type="password"
@@ -77,7 +79,7 @@ export default function Register() {
 
         <div className="mt-4">
           <InputLabel htmlFor="password_confirmation">
-            Confirm Password
+            {t('register.confirm_password')}
           </InputLabel>
           <TextInput
             id="password_confirmation"
@@ -137,14 +139,14 @@ export default function Register() {
             href={route('login')}
             className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
           >
-            Already registered?
+            {t('register.already_registered')}
           </Link>
 
           <PrimaryButton
             className={classNames('ml-4', { 'opacity-25': form.processing })}
             disabled={form.processing}
           >
-            Register
+            {t('register.register')}
           </PrimaryButton>
         </div>
       </form>
