@@ -25,10 +25,11 @@ export default function AppLayout({ title, children }) {
             <div>
               <AuthenticationCardLogo />
             </div>
-
             <NavLinks matches={matches} />
-            <LangChanger matches={matches} />
-            <LoginRegister auth={auth} matches={matches} />
+            <div className="flex row">
+              <LangChanger matches={matches} />
+              <LoginRegister auth={auth} matches={matches} />
+            </div>
             <Hamburger
               showingNavigationDropdown={showingNavigationDropdown}
               setShowingNavigationDropdown={setShowingNavigationDropdown}

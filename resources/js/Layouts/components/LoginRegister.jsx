@@ -10,7 +10,7 @@ export default function LoginRegister({ matches, auth }) {
   const route = useRoute();
   if (matches) {
     return (
-      <div className="flex justify-end">
+      <div>
         {!page.props.auth.user ? (
           <div className="flex items-center p-5">
             <div>
