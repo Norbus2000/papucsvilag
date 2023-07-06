@@ -19,7 +19,7 @@ export default function UpdateProfileInformationForm({ user }) {
     photo: null,
   });
   const route = useRoute();
-  const [photoPreview, setPhotoPreview] = (useState < string) | (null > null);
+  const [photoPreview, setPhotoPreview] = useState(null);
   const photoRef = useRef < HTMLInputElement > null;
   const page = usePage();
   const [verificationLinkSent, setVerificationLinkSent] = useState(false);
@@ -31,45 +31,6 @@ export default function UpdateProfileInformationForm({ user }) {
       preserveScroll: true,
       onSuccess: () => clearPhotoFileInput(),
     });
-  }
-
-  function selectNewPhoto() {
-    photoRef.current?.click();
-  }
-
-  function updatePhotoPreview() {
-    const photo = photoRef.current?.files?.[0];
-
-    if (!photo) {
-      return;
-    }
-
-    form.setData('photo', photo);
-
-    const reader = new FileReader();
-
-    reader.onload = e => {
-      setPhotoPreview(e.target?.result);
-    };
-
-    reader.readAsDataURL(photo);
-  }
-
-  function deletePhoto() {
-    router.delete(route('current-user-photo.destroy'), {
-      preserveScroll: true,
-      onSuccess: () => {
-        setPhotoPreview(null);
-        clearPhotoFileInput();
-      },
-    });
-  }
-
-  function clearPhotoFileInput() {
-    if (photoRef.current?.value) {
-      photoRef.current.value = '';
-      form.setData('photo', null);
-    }
   }
 
   return (
@@ -185,30 +146,30 @@ export default function UpdateProfileInformationForm({ user }) {
         />
         {/*  Email megerosites */}
         {page.props.jetstream.hasEmailVerification &&
-        user.email_verified_at === null ? (
-          <div>
-            <p className="text-sm mt-2 dark:text-white">
-              {t('profile.email_not_verified')}
-              <Link
-                href={route('verification.send')}
-                method="post"
-                as="button"
-                className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                onClick={e => {
-                  e.preventDefault();
-                  setVerificationLinkSent(true);
-                }}
-              >
-                {t('profile.resend_email_verification')}
-              </Link>
-            </p>
-            {verificationLinkSent && (
-              <div className="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                {t('profile.email_verification_sent')}
-              </div>
-            )}
-          </div>
-        ) : null}
+          user.email_verified_at === null && (
+            <div>
+              <p className="text-sm mt-2 dark:text-white">
+                {t('profile.email_not_verified')}
+                <Link
+                  href={route('verification.send')}
+                  method="post"
+                  as="button"
+                  className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                  onClick={e => {
+                    e.preventDefault();
+                    setVerificationLinkSent(true);
+                  }}
+                >
+                  {t('profile.resend_email_verification')}
+                </Link>
+              </p>
+              {verificationLinkSent && (
+                <div className="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                  {t('profile.email_verification_sent')}
+                </div>
+              )}
+            </div>
+          )}
       </div>
     </FormSection>
   );

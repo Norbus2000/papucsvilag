@@ -18,8 +18,8 @@ export default function UpdatePasswordForm() {
     password: '',
     password_confirmation: '',
   });
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const currentPasswordRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef();
+  const currentPasswordRef = useRef();
 
   function updatePassword() {
     form.put(route('user-password.update'), {

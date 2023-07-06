@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 export default function Modal({ isOpen, onClose, maxWidth = '2xl', children }) {

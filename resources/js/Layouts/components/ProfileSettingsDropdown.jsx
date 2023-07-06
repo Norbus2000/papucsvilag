@@ -4,7 +4,6 @@ import useRoute from '@/Hooks/useRoute';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import React from 'react';
 import { router } from '@inertiajs/core';
-import { usePage } from '@inertiajs/inertia-react';
 
 export default function ProfileSettingsDropdown({ auth }) {
   const { t } = useLaravelReactI18n();

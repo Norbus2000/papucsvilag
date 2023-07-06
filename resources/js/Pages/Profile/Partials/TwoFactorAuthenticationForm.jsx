@@ -17,10 +17,10 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation }) {
   const page = usePage();
   const [enabling, setEnabling] = useState(false);
   const [disabling, setDisabling] = useState(false);
-  const [qrCode, setQrCode] = (useState < string) | (null > null);
+  const [qrCode, setQrCode] = useState(null);
   const [recoveryCodes, setRecoveryCodes] = useState([]);
   const [confirming, setConfirming] = useState(false);
-  const [setupKey, setSetupKey] = (useState < string) | (null > null);
+  const [setupKey, setSetupKey] = useState(null);
   const { t } = useLaravelReactI18n();
   const confirmationForm = useForm({
     code: '',

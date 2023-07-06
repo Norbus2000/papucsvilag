@@ -3,9 +3,12 @@ import React from 'react';
 import AppLayout from '@/Layouts/AppLayout';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import HomeContent from '@/pageContent/home/HomeContent';
+import { usePage } from '@inertiajs/react';
 
 export default function Home() {
   const { t } = useLaravelReactI18n();
+  const page = usePage();
+  console.log(page);
 
   return (
     <AppLayout title={t('home.home')}>

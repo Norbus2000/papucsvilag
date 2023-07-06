@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 
 export default function DropdownLink({ as, href, children }) {
   return (

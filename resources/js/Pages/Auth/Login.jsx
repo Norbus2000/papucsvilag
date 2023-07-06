@@ -9,6 +9,8 @@ import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import useRoute from '@/Hooks/useRoute';
+import LangChanger from '@/Layouts/components/LangChanger';
+import AppLayout from '@/Layouts/AppLayout';
 
 export default function Login({ canResetPassword, status }) {
   const { t } = useLaravelReactI18n();
@@ -27,88 +29,90 @@ export default function Login({ canResetPassword, status }) {
   };
 
   return (
-    <AuthenticationCard>
-      <Head title={t('login.login')} />
+    <AppLayout title={t('login.login')}>
+      <AuthenticationCard>
+        {status && (
+          <div className="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+            {status}
+          </div>
+        )}
 
-      {status && (
-        <div className="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-          {status}
-        </div>
-      )}
-
-      <form onSubmit={onSubmit}>
-        <InputLabel htmlFor="email">{t('login.email')}</InputLabel>
-        <TextInput
-          id="email"
-          type="email"
-          className="mt-1 block w-full"
-          value={form.data.email}
-          onChange={e => form.setData('email', e.currentTarget.value)}
-          required
-          autoFocus
-        />
-        <div>
-          <InputError className="mt-2" message={form.errors.email} />
-        </div>
-        <div className="mt-4">
-          <InputLabel htmlFor="password">{t('login.password')}</InputLabel>
+        <form onSubmit={onSubmit}>
+          <InputLabel htmlFor="email">{t('login.email')}</InputLabel>
           <TextInput
-            id="password"
-            type="password"
+            id="email"
+            type="email"
             className="mt-1 block w-full"
-            value={form.data.password}
-            onChange={e => form.setData('password', e.currentTarget.value)}
+            value={form.data.email}
+            onChange={e => form.setData('email', e.currentTarget.value)}
             required
-            autoComplete="current-password"
+            autoFocus
           />
-          <InputError
-            className="mt-2"
-            message={form.errors.password ? t('login.wrong_pass') : ''}
-          />
-        </div>
-        <div className="mt-4">
-          <label className="flex items-center">
-            <Checkbox
-              name="remember"
-              checked={form.data.remember === 'on'}
-              onChange={e =>
-                form.setData('remember', e.currentTarget.checked ? 'on' : '')
-              }
+          <div>
+            <InputError className="mt-2" message={form.errors.email} />
+          </div>
+          <div className="mt-4">
+            <InputLabel htmlFor="password">{t('login.password')}</InputLabel>
+            <TextInput
+              id="password"
+              type="password"
+              className="mt-1 block w-full"
+              value={form.data.password}
+              onChange={e => form.setData('password', e.currentTarget.value)}
+              required
+              autoComplete="current-password"
             />
-            <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-              {t('login.remember_me')}
-            </span>
-          </label>
-        </div>
-        <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4">
-          {canResetPassword && (
-            <div>
+            <InputError
+              className="mt-2"
+              message={form.errors.password ? t('login.wrong_pass') : ''}
+            />
+          </div>
+          <div className="mt-4">
+            <label className="flex items-center">
+              <Checkbox
+                name="remember"
+                checked={form.data.remember === 'on'}
+                onChange={e =>
+                  form.setData('remember', e.currentTarget.checked ? 'on' : '')
+                }
+              />
+              <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                {t('login.remember_me')}
+              </span>
+            </label>
+          </div>
+          <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4">
+            {canResetPassword && (
+              <div>
+                <Link
+                  href={route('password.request')}
+                  className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                >
+                  {t('login.forgot_password')}
+                </Link>
+              </div>
+            )}
+
+            <div className="flex items-center justify-end">
               <Link
-                href={route('password.request')}
+                href={route('register')}
                 className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
               >
-                {t('login.forgot_password')}
+                {t('login.register')}
               </Link>
+
+              <PrimaryButton
+                className={classNames('ml-4', {
+                  'opacity-25': form.processing,
+                })}
+                disabled={form.processing}
+              >
+                {t('login.login')}
+              </PrimaryButton>
             </div>
-          )}
-
-          <div className="flex items-center justify-end">
-            <Link
-              href={route('register')}
-              className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-            >
-              {t('login.register')}
-            </Link>
-
-            <PrimaryButton
-              className={classNames('ml-4', { 'opacity-25': form.processing })}
-              disabled={form.processing}
-            >
-              {t('login.login')}
-            </PrimaryButton>
           </div>
-        </div>
-      </form>
-    </AuthenticationCard>
+        </form>
+      </AuthenticationCard>
+    </AppLayout>
   );
 }

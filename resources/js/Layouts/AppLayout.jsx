@@ -9,9 +9,9 @@ import ApplicationMark from '@/Components/ApplicationMark';
 import NavLinks from './components/NavLinks';
 import { useMediaQuery } from '@mui/material';
 import Footer from '@/Footer/Footer';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo';
 
 export default function AppLayout({ title, children }) {
-  const route = useRoute();
   const matches = useMediaQuery('(min-width:639px)');
   const { auth } = usePage().props;
   const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -22,11 +22,10 @@ export default function AppLayout({ title, children }) {
       <div className="min-h-screen min-w-screen bg-gray-100 dark:bg-gray-900">
         <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
           <div className="flex h-16 justify-between">
-            <div className="flex-shrink-0 flex items-center p-5">
-              <Link href={route('home')}>
-                <ApplicationMark className="block h-9 w-auto" />
-              </Link>
+            <div>
+              <AuthenticationCardLogo />
             </div>
+
             <NavLinks matches={matches} />
             <LangChanger matches={matches} />
             <LoginRegister auth={auth} matches={matches} />
@@ -41,10 +40,17 @@ export default function AppLayout({ title, children }) {
             showingNavigationDropdown={showingNavigationDropdown}
           />
         </nav>
-
-        {/* <!-- Page Content --> */}
         {/* nav height 64    footer height 64 */}
-        <main style={{ minHeight: 'calc(100vh - 130px)' }}>{children}</main>
+        <main
+          style={{
+            minHeight: 'calc(100vh - 130px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {children}
+        </main>
         <Footer />
       </div>
     </div>

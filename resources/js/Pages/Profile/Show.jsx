@@ -7,7 +7,7 @@ import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfile
 import SectionBorder from '@/Components/SectionBorder';
 import AppLayout from '@/Layouts/AppLayout';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
-import { usePage } from '@inertiajs/inertia-react';
+import { usePage } from '@inertiajs/react';
 
 export default function Show({ sessions, confirmsTwoFactorAuthentication }) {
   const page = usePage();
@@ -15,48 +15,45 @@ export default function Show({ sessions, confirmsTwoFactorAuthentication }) {
 
   return (
     <AppLayout title={t('profile.profile')}>
-      <div>
-        <div className="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-          {page.props.jetstream.canUpdateProfileInformation ? (
-            <div>
-              <UpdateProfileInformationForm user={page.props.auth.user} />
+      <div className="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        {page.props.jetstream.canUpdateProfileInformation && (
+          <div>
+            <UpdateProfileInformationForm user={page.props.auth.user} />
 
-              <SectionBorder />
-            </div>
-          ) : null}
-
-          {page.props.jetstream.canUpdatePassword ? (
-            <div className="mt-10 sm:mt-0">
-              <UpdatePasswordForm />
-
-              <SectionBorder />
-            </div>
-          ) : null}
-
-          {page.props.jetstream.canManageTwoFactorAuthentication ? (
-            <div className="mt-10 sm:mt-0">
-              <TwoFactorAuthenticationForm
-                requiresConfirmation={confirmsTwoFactorAuthentication}
-              />
-
-              <SectionBorder />
-            </div>
-          ) : null}
-
-          <div className="mt-10 sm:mt-0">
-            <LogoutOtherBrowserSessions sessions={sessions} />
+            <SectionBorder />
           </div>
+        )}
 
-          {page.props.jetstream.hasAccountDeletionFeatures ? (
-            <>
-              <SectionBorder />
+        {page.props.jetstream.canUpdatePassword && (
+          <div className="mt-10 sm:mt-0">
+            <UpdatePasswordForm />
 
-              <div className="mt-10 sm:mt-0">
-                <DeleteUserForm />
-              </div>
-            </>
-          ) : null}
+            <SectionBorder />
+          </div>
+        )}
+        {page.props.jetstream.canManageTwoFactorAuthentication && (
+          <div className="mt-10 sm:mt-0">
+            <TwoFactorAuthenticationForm
+              requiresConfirmation={confirmsTwoFactorAuthentication}
+            />
+
+            <SectionBorder />
+          </div>
+        )}
+
+        <div className="mt-10 sm:mt-0">
+          <LogoutOtherBrowserSessions sessions={sessions} />
         </div>
+
+        {page.props.jetstream.hasAccountDeletionFeatures && (
+          <>
+            <SectionBorder />
+
+            <div className="mt-10 sm:mt-0">
+              <DeleteUserForm />
+            </div>
+          </>
+        )}
       </div>
     </AppLayout>
   );

@@ -21,9 +21,9 @@ export default function LangChanger({ matches }) {
                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150"
               >
                 {currentLocale() === 'hu' ? (
-                  <HU title="United States" className="w-5" />
+                  <HU className="w-5" />
                 ) : (
-                  <US title="United States" className="w-5" />
+                  <US className="w-5" />
                 )}
 
                 <svg
@@ -53,7 +53,7 @@ export default function LangChanger({ matches }) {
                 onClick={() => setLocale('hu')}
                 className="flex items-center justify-between"
               >
-                <HU title="Hungarian" className="w-6" />
+                <HU title={t('navbar.hu')} className="w-6" />
                 <div className="p-1">{t('navbar.hu')}</div>
               </div>
             </DropdownLink>
@@ -62,7 +62,7 @@ export default function LangChanger({ matches }) {
                 onClick={() => setLocale('en')}
                 className="flex items-center justify-between "
               >
-                <US title="United States" className="w-6" />
+                <US title={t('navbar.en')} className="w-6" />
                 <div className="p-1 ">{t('navbar.en')}</div>
               </div>
             </DropdownLink>
