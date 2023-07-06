@@ -46,6 +46,7 @@ export default function Login({ status }) {
             onChange={e => form.setData('email', e.currentTarget.value)}
             required
             autoFocus
+            autoComplete="email"
           />
           <div>
             <InputError className="mt-2" message={form.errors.email} />
@@ -95,7 +96,7 @@ export default function Login({ status }) {
               >
                 {t('login.register')}
               </Link>
-              <div className='max-md:pt-3'>
+              <div className="max-md:pt-3">
                 <PrimaryButton
                   className={classNames('ml-4', {
                     'opacity-25': form.processing,

@@ -58,6 +58,7 @@ export default function Register() {
               value={form.data.email}
               onChange={e => form.setData('email', e.currentTarget.value)}
               required
+              autoComplete="email"
             />
             <InputError className="mt-2" message={form.errors.email} />
           </div>
@@ -143,7 +144,7 @@ export default function Register() {
               {t('register.already_registered')}
             </Link>
 
-            <div className='max-sm:pt-3'>
+            <div className="max-sm:pt-3">
               <PrimaryButton
                 className={classNames({ 'opacity-25': form.processing })}
                 disabled={form.processing}
