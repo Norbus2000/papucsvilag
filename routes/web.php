@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,9 +24,19 @@ Route::get('/', function () {
     Inertia::share('canRegister', Route::has('register'));
 })->name('home');
 
+
 Route::get('/products', function () {
     return Inertia::render('Products');
 })->name('products');
+
+Route::get('/admin', ['middleware' => 'admin', function () {
+    return Inertia::render('Admin');
+}])->name('admin');
+
+
+
+
+
 
 Route::middleware([
     'auth:sanctum',

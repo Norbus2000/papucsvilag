@@ -12,7 +12,8 @@
         "laravel/jetstream": "^3.2",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "tightenco/ziggy": "^1.0"
+        "laravel/ui": "^4.2",
+        "tightenco/ziggy": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
