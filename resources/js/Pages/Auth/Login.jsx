@@ -9,10 +9,9 @@ import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import useRoute from '@/Hooks/useRoute';
-import LangChanger from '@/Layouts/components/LangChanger';
 import AppLayout from '@/Layouts/AppLayout';
 
-export default function Login({ canResetPassword, status }) {
+export default function Login({ status }) {
   const { t } = useLaravelReactI18n();
   const route = useRoute();
   const form = useForm({
@@ -81,34 +80,31 @@ export default function Login({ canResetPassword, status }) {
               </span>
             </label>
           </div>
-          <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4">
-            {canResetPassword && (
-              <div>
-                <Link
-                  href={route('password.request')}
-                  className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                >
-                  {t('login.forgot_password')}
-                </Link>
-              </div>
-            )}
+          <div className="flex items-center justify-between max-md:flex-col ">
+            <Link
+              href={route('password.request')}
+              className="max-md:p-3 justify-start underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+            >
+              {t('login.forgot_password')}
+            </Link>
 
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-end max-md:flex-col">
               <Link
                 href={route('register')}
                 className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
               >
                 {t('login.register')}
               </Link>
-
-              <PrimaryButton
-                className={classNames('ml-4', {
-                  'opacity-25': form.processing,
-                })}
-                disabled={form.processing}
-              >
-                {t('login.login')}
-              </PrimaryButton>
+              <div className='max-md:pt-3'>
+                <PrimaryButton
+                  className={classNames('ml-4', {
+                    'opacity-25': form.processing,
+                  })}
+                  disabled={form.processing}
+                >
+                  {t('login.login')}
+                </PrimaryButton>
+              </div>
             </div>
           </div>
         </form>
