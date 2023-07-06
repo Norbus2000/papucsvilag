@@ -4,12 +4,11 @@ import useRoute from '@/Hooks/useRoute';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
 import React from 'react';
 import { router } from '@inertiajs/core';
+import { usePage } from '@inertiajs/inertia-react';
 
-export default function ProfileSettingsDropdown() {
-  const page = usePage();
+export default function ProfileSettingsDropdown({ auth }) {
   const { t } = useLaravelReactI18n();
   const route = useRoute();
-
   function logout(e) {
     e.preventDefault();
     router.post(route('logout'));
@@ -26,7 +25,7 @@ export default function ProfileSettingsDropdown() {
               type="button"
               className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150"
             >
-              {page.props.auth.user?.name}
+              {auth.user?.name}
               <svg
                 className="ml-2 -mr-0.5 h-4 w-4"
                 xmlns="http://www.w3.org/2000/svg"

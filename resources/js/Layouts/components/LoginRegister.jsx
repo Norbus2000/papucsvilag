@@ -4,11 +4,10 @@ import useRoute from '@/Hooks/useRoute';
 import { Link, usePage } from '@inertiajs/react';
 import ProfileSettingsDropdown from './ProfileSettingsDropdown';
 
-export default function LoginRegister({ matches }) {
+export default function LoginRegister({ matches, auth }) {
   const { t } = useLaravelReactI18n();
   const page = usePage();
   const route = useRoute();
-  const { canRegister } = usePage().props;
   if (matches) {
     return (
       <div className="flex justify-end">
@@ -22,18 +21,16 @@ export default function LoginRegister({ matches }) {
                 {t('navbar.login')}
               </Link>
 
-              {canRegister && (
-                <Link
-                  href={route('register')}
-                  className="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                >
-                  {t('navbar.register')}
-                </Link>
-              )}
+              <Link
+                href={route('register')}
+                className="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+              >
+                {t('navbar.register')}
+              </Link>
             </div>
           </div>
         ) : (
-          <ProfileSettingsDropdown />
+          <ProfileSettingsDropdown auth={auth} />
         )}
       </div>
     );

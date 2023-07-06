@@ -18,10 +18,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canRegister' => Route::has('register'),
-    ]);
-    Inertia::share('canRegister', Route::has('register'));
+    return Inertia::render('Home');
 })->name('home');
 
 

@@ -4,9 +4,9 @@ import '../css/app.css';
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
-import { RouteContext } from '@/Hooks/useRoute';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { LaravelReactI18nProvider } from 'laravel-react-i18n';
+import { RouteContext } from './Hooks/useRoute';
 
 const appName =
   window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';

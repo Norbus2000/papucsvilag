@@ -1,7 +1,6 @@
 import { Link, useForm, Head } from '@inertiajs/react';
 import classNames from 'classnames';
 import React from 'react';
-import useRoute from '@/Hooks/useRoute';
 import AuthenticationCard from '@/Components/AuthenticationCard';
 import Checkbox from '@/Components/Checkbox';
 import InputLabel from '@/Components/InputLabel';
@@ -9,6 +8,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import { useLaravelReactI18n } from 'laravel-react-i18n';
+import useRoute from '@/Hooks/useRoute';
 
 export default function Login({ canResetPassword, status }) {
   const { t } = useLaravelReactI18n();
@@ -19,12 +19,12 @@ export default function Login({ canResetPassword, status }) {
     remember: '',
   });
 
-  function onSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
     form.post(route('login'), {
       onFinish: () => form.reset('password'),
     });
-  }
+  };
 
   return (
     <AuthenticationCard>
@@ -37,21 +37,18 @@ export default function Login({ canResetPassword, status }) {
       )}
 
       <form onSubmit={onSubmit}>
+        <InputLabel htmlFor="email">{t('login.email')}</InputLabel>
+        <TextInput
+          id="email"
+          type="email"
+          className="mt-1 block w-full"
+          value={form.data.email}
+          onChange={e => form.setData('email', e.currentTarget.value)}
+          required
+          autoFocus
+        />
         <div>
-          <InputLabel htmlFor="email">{t('login.email')}</InputLabel>
-          <TextInput
-            id="email"
-            type="email"
-            className="mt-1 block w-full"
-            value={form.data.email}
-            onChange={e => form.setData('email', e.currentTarget.value)}
-            required
-            autoFocus
-          />
-          <InputError
-            className="mt-2"
-            message={form.errors.email ? t('login.failed_login') : ''}
-          />
+          <InputError className="mt-2" message={form.errors.email} />
         </div>
         <div className="mt-4">
           <InputLabel htmlFor="password">{t('login.password')}</InputLabel>
