@@ -135,7 +135,7 @@ export default function Register() {
             </div>
           )}
 
-          <div className="flex items-center justify-end mt-4">
+          <div className="flex items-center justify-between mt-4 max-sm:flex-col">
             <Link
               href={route('login')}
               className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
@@ -143,12 +143,14 @@ export default function Register() {
               {t('register.already_registered')}
             </Link>
 
-            <PrimaryButton
-              className={classNames('ml-4', { 'opacity-25': form.processing })}
-              disabled={form.processing}
-            >
-              {t('register.register')}
-            </PrimaryButton>
+            <div className='max-sm:pt-3'>
+              <PrimaryButton
+                className={classNames({ 'opacity-25': form.processing })}
+                disabled={form.processing}
+              >
+                {t('register.register')}
+              </PrimaryButton>
+            </div>
           </div>
         </form>
       </AuthenticationCard>

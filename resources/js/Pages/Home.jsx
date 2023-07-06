@@ -8,7 +8,6 @@ import { usePage } from '@inertiajs/react';
 export default function Home() {
   const { t } = useLaravelReactI18n();
   const page = usePage();
-  console.log(page);
 
   return (
     <AppLayout title={t('home.home')}>
