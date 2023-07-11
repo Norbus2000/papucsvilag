@@ -20,7 +20,7 @@ export default function UpdateProfileInformationForm({ user }) {
   });
   const route = useRoute();
   const [photoPreview, setPhotoPreview] = useState(null);
-  const photoRef = useRef < HTMLInputElement > null;
+  const photoRef = useRef();
   const page = usePage();
   const [verificationLinkSent, setVerificationLinkSent] = useState(false);
   const { t } = useLaravelReactI18n();

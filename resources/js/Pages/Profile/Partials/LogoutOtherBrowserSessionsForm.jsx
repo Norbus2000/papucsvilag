@@ -14,7 +14,7 @@ import { useLaravelReactI18n } from 'laravel-react-i18n';
 export default function LogoutOtherBrowserSessions({ sessions }) {
   const [confirmingLogout, setConfirmingLogout] = useState(false);
   const route = useRoute();
-  const passwordRef = useRef < HTMLInputElement > null;
+  const passwordRef = useRef();
   const form = useForm({
     password: '',
   });

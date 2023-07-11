@@ -17,7 +17,7 @@ export default function DeleteUserForm() {
   const form = useForm({
     password: '',
   });
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef();
 
   function confirmUserDeletion() {
     setConfirmingUserDeletion(true);

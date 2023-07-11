@@ -15,8 +15,8 @@ export default function TwoFactorChallenge() {
     code: '',
     recovery_code: '',
   });
-  const recoveryCodeRef = useRef < HTMLInputElement > null;
-  const codeRef = useRef < HTMLInputElement > null;
+  const recoveryCodeRef = useRef();
+  const codeRef = useRef();
 
   function toggleRecovery(e) {
     e.preventDefault();

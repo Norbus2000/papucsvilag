@@ -22,7 +22,7 @@ export default function ConfirmsPassword({
     error: '',
     processing: false,
   });
-  const passwordRef = useRef < HTMLInputElement > null;
+  const passwordRef = useRef();
 
   function startConfirmingPassword() {
     axios.get(route('password.confirmation')).then(response => {
